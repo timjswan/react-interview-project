@@ -4,10 +4,9 @@ class UserInput extends Component {
 	constructor(props){
 		super(props);
 		this.state = {user: ''};
-		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleChange(e) {
+	handleChange = e => {
 		this.setState({user: e.target.value});
 		this.props.onUserChange(e.target.value);
 	}

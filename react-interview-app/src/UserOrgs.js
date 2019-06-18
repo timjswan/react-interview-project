@@ -6,13 +6,16 @@ class UserOrgs extends Component {
 		super(props);
 	}
 
-	/*getRepos = user => {
+	getOrgs = user => {
 
-	};*/
+	};
 
 	render(){
 		return(
-			<p>{this.props.user}</p>
+			<React.Fragment>
+				<h1>Organisations</h1>
+				<p>{this.props.user}</p>
+			</React.Fragment>
 		);
 	}
 }
