@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { getUserData } from "./github-api";
 
 class UserInput extends Component {
 	constructor(props){
@@ -7,8 +8,18 @@ class UserInput extends Component {
 	}
 
 	handleChange = e => {
-		this.setState({user: e.target.value});
-		this.props.onUserChange(e.target.value);
+		const user = e.target.value;
+		let userData = {};
+
+		this.setState({user: user});
+
+		if(user.length > 3){
+			userData = getUserData(user);
+			userData.then((result) => {
+				const orgs = result.orgs
+				this.props.onUserChange(user, orgs);
+			});
+		}
 	}
 
 	render(){

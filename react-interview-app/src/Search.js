@@ -7,22 +7,22 @@ import UserOrgs from "./UserOrgs";
 class Search extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {user: ''};
+		this.state = {user: '', orgs: []};
 	}
 
-	setUser = user => {
-		this.setState({user});
+	handleChange = (user, orgs) => {
+		this.setState({user, orgs});
 	}
 
 	render(){
 		return (
 			<React.Fragment>
-				<UserInput onUserChange={this.setUser} />
+				<UserInput onUserChange={this.handleChange} />
 				<Router>
 					<Link to="/repos">Repositories</Link>
-					<Link to="/docs">Organisations</Link>
+					<Link to="/orgs">Organisations</Link>
 					<Route path="/repos" component={props => <UserRepos {...props} user={this.state.user} />} />
-					<Route path="/docs" component={props => <UserOrgs {...props} user={this.state.user} />} />
+					<Route path="/orgs" component={props => <UserOrgs {...props} user={this.state.user} orgs={this.state.orgs}/>} />
 				</Router>
 			</React.Fragment>
 		);

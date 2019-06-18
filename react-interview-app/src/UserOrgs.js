@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import "./github-api";
 
 class UserOrgs extends Component {
 	constructor(props){
 		super(props);
 	}
 
-	getOrgs = user => {
-
-	};
-
 	render(){
+		const orgs = this.props.orgs;
 		return(
 			<React.Fragment>
 				<h1>Organisations</h1>
-				<p>{this.props.user}</p>
+				{orgs.length <= 0
+				? "No data"
+				: orgs.map(org => (
+					<p>{org.login}</p>
+				))}
 			</React.Fragment>
 		);
 	}
