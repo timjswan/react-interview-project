@@ -1,7 +1,7 @@
 import React from 'react';
 import UserInput from "./UserInput";
 import UserRepos from "./UserRepos";
-import UserDocs from "./UserDocs";
+import UserOrgs from "./UserOrgs";
 
 class Search extends React.Component {
 	constructor(props){
@@ -10,16 +10,16 @@ class Search extends React.Component {
 		this.handleUserChange = this.handleUserChange.bind(this);
 	}
 
-	handleUserChange(user){
+	setUser(user){
 		this.setState({user});
 	}
 
 	render(){
 		return (
 			<React.Fragment>
-				<UserInput onUserChange={this.handleUserChange} />
+				<UserInput onUserChange={this.setUser} />
 				<UserRepos user={this.state.user} />
-				<UserDocs user={this.state.user} />
+				<UserOrgs user={this.state.user} />
 			</React.Fragment>
 		);
 	}
