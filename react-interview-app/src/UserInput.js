@@ -16,7 +16,6 @@ class UserInput extends Component {
 		if(user.length > 3){
 			try {
 				const res = await getUserData(user);
-				console.log(res);
 				if(Object.keys(res.user).length > 0) {
 					const orgs = res.orgs
 					this.props.updateUserOrgs(orgs);
@@ -31,10 +30,8 @@ class UserInput extends Component {
 	}
 
 	render(){
-		return (
-			<form className="App" name="git-search-form" id="git-search-form" action="#">
-	            <input onChange={this.handleChange} type="text" name="user" id="user" value={this.state.user} />
-	        </form>
+		return (			
+	        <input onChange={this.handleChange} placeholder="Enter username." type="text" name="user" id="user" value={this.state.user} />
         );
 	}
 }

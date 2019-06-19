@@ -9,7 +9,7 @@ class UserOrgs extends Component {
 		const orgs = this.props.orgs;
 		return(
 			<React.Fragment>
-				<h1>Organisations</h1>
+				<h4>Organisations</h4>
 				{orgs.length <= 0
 				? "No organisations to show"
 				: orgs.map((org, i) => (
