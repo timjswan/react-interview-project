@@ -15,7 +15,7 @@ function InvalidUser(){
 	return(
 		<span>X</span>
 	);
-}//
+}
 
 class Search extends React.Component {
 	constructor(props){
