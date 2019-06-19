@@ -7,12 +7,14 @@ class UserInput extends Component {
 		this.state = {user: ''};
 	}
 
+	// Handle the api results as the username is being typed
 	handleChange = async e => {
 		const user = e.target.value;
 
 		this.setState({user: user});
 		this.props.onUserChange(user);
 
+		// Not having this min char would probably break things
 		if(user.length > 3){
 			try {
 				const res = await getUserData(user);
@@ -25,6 +27,7 @@ class UserInput extends Component {
 				this.props.userExists(false);
 			}
 		} else {
+			// Typed user name is too short so the user can't exist
 			this.props.userExists(false);
 		}
 	}
