@@ -9,7 +9,6 @@
 #user, .is-valid-user {
    font-size: 1.5em;
    vertical-align: middle;
-   height: 24px;
    padding: .5em;
 }
 
@@ -21,7 +20,7 @@ nav a:first-of-type {
 	margin-right: .5em;
 }
 
-nav a.nav-link-active {
+nav .nav-link-active {
 	background-color: #00A;
 }
 
