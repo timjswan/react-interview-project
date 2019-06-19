@@ -12,13 +12,20 @@ class UserInput extends Component {
 		let userData = {};
 
 		this.setState({user: user});
+		this.props.onUserChange(user);
 
 		if(user.length > 3){
 			userData = getUserData(user);
-			userData.then((result) => {
-				const orgs = result.orgs
-				this.props.onUserChange(user, orgs);
+			userData.then(res => {
+				const orgs = res.orgs
+				this.props.updateUserOrgs(orgs);
+				this.props.userExists(true);
+			}).catch(err => {
+				if(err.response && err.response.status === 404)
+					this.props.userExists(false);
 			});
+		} else {
+			this.props.userExists(false);
 		}
 	}
 
