@@ -7,23 +7,24 @@ class UserInput extends Component {
 		this.state = {user: ''};
 	}
 
-	handleChange = e => {
+	handleChange = async e => {
 		const user = e.target.value;
-		let userData = {};
 
 		this.setState({user: user});
 		this.props.onUserChange(user);
 
 		if(user.length > 3){
-			userData = getUserData(user);
-			userData.then(res => {
-				const orgs = res.orgs
-				this.props.updateUserOrgs(orgs);
-				this.props.userExists(true);
-			}).catch(err => {
-				if(err.response && err.response.status === 404)
-					this.props.userExists(false);
-			});
+			try {
+				const res = await getUserData(user);
+				console.log(res);
+				if(Object.keys(res.user).length > 0) {
+					const orgs = res.orgs
+					this.props.updateUserOrgs(orgs);
+					this.props.userExists(true);
+				}
+			} catch(err) {
+				this.props.userExists(false);
+			}
 		} else {
 			this.props.userExists(false);
 		}

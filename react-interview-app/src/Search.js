@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import UserInput from "./UserInput";
 import UserRepos from "./UserRepos";
 import UserOrgs from "./UserOrgs";
-import "./css/search.css";
+//import "./css/search.css";
 
 function ValidUser(){
 	return(
