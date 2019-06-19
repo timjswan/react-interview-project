@@ -37,7 +37,6 @@ class UserRepos extends Component {
 		const repos = this.state.repos;
 		return(
 			<React.Fragment>
-				<h4>Repositories</h4>
 				{repos.length <= 0
 				? "No repositories to show"
 				: repos.map((repo, i) => (
